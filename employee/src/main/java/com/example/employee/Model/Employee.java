@@ -3,7 +3,15 @@ package com.example.employee.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "employees")
+//@Table(name = "Employee")
+@NamedStoredProcedureQuery(
+        name = "Employee.getEmployeeByMinSalary",
+        procedureName = "GetEmployeeByMinSalary",
+        resultClasses = Employee.class,
+        parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "minSalary", type = Double.class)
+        }
+)
 public class Employee {
 
     @Id
@@ -13,6 +21,17 @@ public class Employee {
     private String role;
     private int age;
     private double salary;
+
+    public Employee(int id, String name, String role, int age, double salary) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    public Employee() {
+    }
 
     public int getId() {
         return id;

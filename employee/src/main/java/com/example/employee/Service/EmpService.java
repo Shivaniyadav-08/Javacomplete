@@ -1,7 +1,10 @@
 package com.example.employee.Service;
 
 
+import com.example.employee.Model.Address;
 import com.example.employee.Model.Employee;
+import com.example.employee.Repository.Addressrepo;
+import com.example.employee.Repository.CustomEmployeeRepository;
 import com.example.employee.Repository.EmpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,7 @@ public class EmpService {
 
     @Autowired
     EmpRepository empRepository;
+
 
     public  Employee saveEmpDetails(Employee employee){
         return empRepository.save(employee);
@@ -34,7 +38,24 @@ public class EmpService {
          empRepository.deleteById(id);
     }
 
+    public List<Employee> getByRole(String role){
+        return empRepository.findByRole(role);
+    }
 
+    public List<Employee> getBySalaryGreaterThan(double salary){
+        return empRepository.findEmployeeWithSalaryGreaterThan(salary);
+    }
 
+    public List<Employee> getByAgeLessThan(int age){
+        return empRepository.findEmployeeWithAgeLessThanSomething(age);
+    }
+
+    public List<Employee> getByName(String name){
+        return empRepository.findByName(name);
+    }
+
+    public List<Employee> getByMinSalary(double minSalary){
+        return empRepository.getEmployeesByMinSalary(minSalary);
+    }
 
 }
