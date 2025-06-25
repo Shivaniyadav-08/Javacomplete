@@ -5,29 +5,33 @@ import com.example.employee.Model.Employee;
 import com.example.employee.Repository.Addressrepo;
 import com.example.employee.Service.EmpService;
 import org.apache.coyote.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class Controller {
 
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(Controller.class);
     @Autowired
     EmpService empService;
 
     @PostMapping("/save/emp-details")
     public Employee saveEmpDetails( @RequestBody Employee employee){
+//        logger.info("Save Employee: {}", employee.getName());
         Employee emp = empService.saveEmpDetails(employee);
         return emp;
     }
 
     @GetMapping("/get/emp-details")
     public List<Employee> getAllEmp (){
+        logger.info( "Fetching Data of employee");
         List<Employee> employeeList = empService.getAllEmp();
         return  employeeList;
     }
@@ -35,6 +39,8 @@ public class Controller {
     @GetMapping("/get/emp-details/{id}")
 
     public Employee getByID(@PathVariable int id){
+        logger.info( "Fetching Data of employee by id {}", id);
+
         Employee empId = empService.getByID(id);
         return empId;
     }
@@ -47,6 +53,7 @@ public class Controller {
 
     @DeleteMapping("/delete/emp-details/{id}")
     public void deleteEmp (@PathVariable int id){
+        logger.warn( "Delete employee by id {}", id);
         empService.deleteEmp(id);
     }
 

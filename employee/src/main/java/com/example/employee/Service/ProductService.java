@@ -17,8 +17,6 @@ public class ProductService {
     @Autowired
     RedisTemplate<String,Object> redisTemplate;
 
-    @Autowired
-    ProductRepository productRepository;
 
   //  public static final String Hash_key  = "Product";
     public Product save(Product product){

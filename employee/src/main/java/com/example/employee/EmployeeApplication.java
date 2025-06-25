@@ -15,25 +15,7 @@ public class EmployeeApplication {
 
 	  SpringApplication.run(EmployeeApplication.class, args);
 
-	/* Studentrepo studentrepo = context.getBean(Studentrepo.class);
-	 CoursesRepo coursesRepo = context.getBean(CoursesRepo.class);
 
-	 Courses c1 = new Courses();
-	 c1.setCourse_id(101);
-	 c1.setCourse_name("java");
-
-	 Courses c2 = new Courses();
-	 c2.setCourse_id(102);
-	 c2.setCourse_name("Python");
-
-	 coursesRepo.save(c1);
-	 coursesRepo.save(c2);
-
-	 Student s1 = new Student();
-	 s1.setRoll_num(1);
-	 s1.setName("Shivani");
-
-	 studentrepo.save( s1);*/
 	}
 
 }

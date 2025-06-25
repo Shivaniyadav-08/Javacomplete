@@ -10,4 +10,5 @@ import java.util.List;
 public interface Addressrepo extends JpaRepository<Address,Integer> {
     List<Address> findByStreetAndCity(String street, String city);
 
+
 }
